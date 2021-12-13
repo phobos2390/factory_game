@@ -53,4 +53,30 @@ TMON SET (miner_tile.on - tileset_start) / TS
 TAOF SET (assembler_tiles.off - tileset_start) / TS
 TAON SET (assembler_tiles.on - tileset_start) / TS
 
+
+SECTION "map tile passabile table", ROM0
+map_tile_passable_table:
+TILE_NUMBER = 0
+REPT ((tileset_end - tileset_start) / TS)
+  IF (TILE_NUMBER == TWAT) \
+  || (TILE_NUMBER == TVRE) \
+  || (TILE_NUMBER == TDLE) \ 
+  || (TILE_NUMBER == TDLE) \
+  || (TILE_NUMBER == THOE) \
+  || (TILE_NUMBER == TRDE) \ 
+  || (TILE_NUMBER == TURE) \
+  || (TILE_NUMBER == TLUE) \
+  || (TILE_NUMBER == TFOF) \
+  || (TILE_NUMBER == TFON) \
+  || (TILE_NUMBER == TMOF) \
+  || (TILE_NUMBER == TMON) \
+  || (TILE_NUMBER == TAOF) \
+  || (TILE_NUMBER == TAON)
+    DB 0
+  ELSE
+    DB 1
+  ENDC
+TILE_NUMBER = TILE_NUMBER + 1
+ENDR
+
 ENDC
